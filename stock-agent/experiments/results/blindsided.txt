@@ -1,0 +1,12 @@
+'Consistent-then-blindsided' scan - FAANG 2026 (theta 1-day-ahead)
+
+BEST SHOWCASE: TSLA on 2026-07-23  <- agent CAUGHT it
+  correct 1-day-ahead calls for 2 days running (2026-07-21, 2026-07-22),
+  then predicted up for 2026-07-23 but the stock actually went down - blindsided.
+  vetting agent's call that day: stance=caution, confidence=medium (cited 9 pre-event headlines)
+
+All blindsided-after-streak events (agent_stance):
+  TSLA 2026-07-23  streak 2  agent=caution  [caught]
+  MSFT 2026-06-26  streak 2  agent=trust
+
+Caveat: a short daily-direction streak is within chance; this is an illustrative example of the value proposition, not proof the forecaster is predictive.

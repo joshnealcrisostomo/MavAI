@@ -1,0 +1,11 @@
+Forecast-vetting evaluation (Week-11 tiers) - FAANG 2026, 28 events (forecast right on 9, wrong on 19)
+
+UNIT       no-lookahead invariants: 56/56 checks passed (100%)  [news strictly pre-event; forecast used no future data]
+TRAJECTORY grounding: 100% of verdicts cite ONLY pre-event headlines (no fabricated sources)
+END-TO-END catch-rate: 11% - when the forecast was WRONG (19 events), the agent flagged caution/reject
+END-TO-END trust-rate: 78% - when the forecast was RIGHT (9 events), the agent said trust (didn't cry wolf)
+           stance distribution: {'trust': 24, 'caution': 3, 'reject': 1}
+END-TO-END discrimination: flags 21% of big-move/event days vs 7% of calm control days (gap +14 pts); trusts 93% of calm days. A large gap = real discrimination, not always-caution.
+LLM-JUDGE  rationale quality (8B, 1-5, grounded + no-advice): 4.64  (n=28)
+
+Interpretation: the forecaster is near-random on these big-move days (see the bake-off); the value is the catch-rate - how often the agent correctly distrusts a forecast that news should have warned against, while staying grounded (no invented sources) and giving no investment advice.

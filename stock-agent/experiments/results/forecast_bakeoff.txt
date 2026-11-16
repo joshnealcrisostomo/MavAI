@@ -1,0 +1,14 @@
+Forecast bake-off - FAANG/Big Tech, 2026-01-01..today, horizon=5d, 161 as-of samples across the ticker grid
+HIT = directional accuracy (flat forecast counts as a miss). HIT_C = accuracy when the model committed to a direction. FLAT = % abstained.
+
+model         n     HIT    HIT_C    FLAT     MAE $     MAPE
+-----------------------------------------------------------
+naive       161   50.9%    50.6%    3.1%     16.39    4.56%  (baseline)
+ets         161   12.4%    60.0%   81.4%     16.07    4.48%
+arima       161    9.3%    34.9%   73.3%     16.77    4.68%
+theta       161   47.8%    46.6%   18.6%     16.27    4.54%
+chronos     161   42.9%    42.4%    1.9%     17.18    4.81%
+
+Naive-drift baseline directional accuracy: 50.9% (a coin flip is 50%).
+Recommended FORECAST_BACKEND = theta  (best REAL model; naive is only the baseline). Set it in core/config.py or .env.
+Finding: the models do not meaningfully beat the coin-flip baseline on direction. That is the point - a price-only forecast is unreliable, which is exactly why the agent's news-vetting layer (flagging WHEN to distrust it) is the value.

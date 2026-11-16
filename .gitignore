@@ -1,0 +1,4 @@
+
+# deploy artifact (rebuilt on demand, never commit)
+stock-agent-deploy.tar.gz
+*.tar.gz

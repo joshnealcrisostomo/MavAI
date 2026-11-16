@@ -1,0 +1,15 @@
+# Normalize line endings. Without this, Windows git checks shell scripts out as CRLF, which
+# breaks their shebang when run inside a Linux Docker container ("not found" on entrypoint.sh).
+* text=auto
+
+# These MUST stay LF - they run inside the container
+*.sh          text eol=lf
+entrypoint.sh text eol=lf
+Dockerfile    text eol=lf
+*.template    text eol=lf
+
+# Never touch binaries
+*.pdf  binary
+*.zip  binary
+*.png  binary
+*.jpg  binary

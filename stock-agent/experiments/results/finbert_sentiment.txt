@@ -1,0 +1,6 @@
+FinBERT sentiment eval on Financial PhraseBank (gtfintechlab/financial_phrasebank_sentences_allagree:5768 (all-agree)), n=150
+
+FinBERT (deterministic DS model): accuracy 98%  macro-F1 97%
+8B LLM baseline (llama-3.1-8b):    accuracy 92%  macro-F1 91%
+
+CAVEAT: FinBERT was fine-tuned ON Financial PhraseBank, so its number here is IN-DOMAIN (effectively train-on-test) and overstates generalisation. The value of this eval is the COMPARISON: the 8B LLM was not trained on PhraseBank, so FinBERT beating it shows the specialised model genuinely helps on financial-sentiment tone. For a true generalisation number, evaluate on a held-out set like FiQA.

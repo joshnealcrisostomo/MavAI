@@ -1,0 +1,54 @@
+{
+  "_README": [
+    "HAND-CURATED benchmark. YOU fill this in by hand - do NOT use the AI to pick or label events.",
+    "The AI is only TESTED against this file later (experiments/eval_curated.py); it never helps build it.",
+    "",
+    "For each event you research yourself:",
+    "  ticker         - e.g. TSLA (US FAANG/Big-Tech only).",
+    "  move_date      - YYYY-MM-DD, the trading day the price actually tanked/surged.",
+    "  direction      - 'tank' | 'surge' | 'calm'  (calm = a control day, no real event).",
+    "  label_type     - 'event' (real news catalyst) | 'calm' (control) | 'unexplained' (big move, NO clear news).",
+    "  catalyst       - short phrase describing the real cause (e.g. 'Q2 earnings miss + weak guidance').",
+    "  headlines      - the PRE-MOVE news you found. Each: title, url, published (ISO timestamp).",
+    "                   IMPORTANT: only include headlines published BEFORE the move (overnight/pre-market",
+    "                   or the days before). A post-move 'here is why it fell' article is lookahead - do NOT use it.",
+    "                   For 'calm' and 'unexplained' rows, leave headlines empty [].",
+    "  why            - one line, YOUR reasoning for how this news caused the move.",
+    "  expected_verdict - what the agent SHOULD say: 'caution'/'reject' for real events, 'trust' for calm days.",
+    "  notes          - anything else (optional).",
+    "",
+    "Aim for ~15-40 rows, roughly balanced between 'event' and 'calm', plus a few 'unexplained' if you find them.",
+    "Delete the two _example rows below (they are skipped anyway) once you have real ones.",
+    "Run:  ./.venv/Scripts/python.exe experiments/eval_curated.py"
+  ],
+  "events": [
+    {
+      "_example": true,
+      "ticker": "TSLA",
+      "move_date": "2026-07-23",
+      "direction": "tank",
+      "label_type": "event",
+      "catalyst": "Q2 earnings miss and weak delivery guidance",
+      "headlines": [
+        {"title": "Tesla Q2 earnings miss estimates, warns on deliveries",
+         "url": "https://example.com/tsla-q2-miss",
+         "published": "2026-07-22T21:15:00Z"}
+      ],
+      "why": "Earnings missed and guidance was cut after the close; the stock gapped down at the next open.",
+      "expected_verdict": "caution",
+      "notes": "EXAMPLE ROW - delete this. Fields show the expected format."
+    },
+    {
+      "_example": true,
+      "ticker": "AAPL",
+      "move_date": "2026-03-11",
+      "direction": "calm",
+      "label_type": "calm",
+      "catalyst": "",
+      "headlines": [],
+      "why": "Normal trading day, only routine coverage - nothing material.",
+      "expected_verdict": "trust",
+      "notes": "EXAMPLE control row - delete this."
+    }
+  ]
+}

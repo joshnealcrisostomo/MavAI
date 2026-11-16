@@ -1,0 +1,281 @@
+[
+  {
+    "variant": "minimal",
+    "tool_acc": 0.9166666666666666,
+    "ticker_acc": 0.9166666666666666,
+    "avg_latency_ms": 19022.4,
+    "avg_tokens": 4342.2,
+    "rows": [
+      {
+        "q": "What were the min and max prices of Apple in Q1 2025?",
+        "expected_tool": "get_stock_history",
+        "got_tool": "get_stock_history",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "current price of Microsoft",
+        "expected_tool": "get_current_price",
+        "got_tool": "get_current_price",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "Show Tesla's 20-day moving average over the last 3 months",
+        "expected_tool": "get_moving_average",
+        "got_tool": "get_moving_average",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "Compare Apple and Google this year and say which did better",
+        "expected_tool": "compare_stocks",
+        "got_tool": "compare_stocks",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "What were Nvidia's highest and lowest closing prices last month?",
+        "expected_tool": "get_stock_history",
+        "got_tool": "get_stock_history",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "How does Amazon's price compare to Walmart's year to date?",
+        "expected_tool": "compare_stocks",
+        "got_tool": "compare_stocks",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "What's the current price of Jollibee?",
+        "expected_tool": "get_current_price",
+        "got_tool": "get_current_price",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "Globe's min and max over the last 3 months",
+        "expected_tool": "get_stock_history",
+        "got_tool": "get_stock_history",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "How has Nvidia performed over the past two weeks?",
+        "expected_tool": "get_stock_history",
+        "got_tool": "get_stock_history",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "What's GT Capital's 30-day moving average over the last month?",
+        "expected_tool": "get_moving_average",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "Compare Ayala Land and SM Prime year to date",
+        "expected_tool": "compare_stocks",
+        "got_tool": "compare_stocks",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "Compare Apple and Jollibee this year",
+        "expected_tool": "compare_stocks",
+        "got_tool": "compare_stocks",
+        "tool_ok": true,
+        "ticker_ok": true
+      }
+    ]
+  },
+  {
+    "variant": "rules",
+    "tool_acc": 0.75,
+    "ticker_acc": 0.75,
+    "avg_latency_ms": 25783.1,
+    "avg_tokens": 5179.1,
+    "rows": [
+      {
+        "q": "What were the min and max prices of Apple in Q1 2025?",
+        "expected_tool": "get_stock_history",
+        "got_tool": "get_stock_history",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "current price of Microsoft",
+        "expected_tool": "get_current_price",
+        "got_tool": "get_current_price",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "Show Tesla's 20-day moving average over the last 3 months",
+        "expected_tool": "get_moving_average",
+        "got_tool": "get_moving_average",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "Compare Apple and Google this year and say which did better",
+        "expected_tool": "compare_stocks",
+        "got_tool": "compare_stocks",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "What were Nvidia's highest and lowest closing prices last month?",
+        "expected_tool": "get_stock_history",
+        "got_tool": "get_stock_history",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "How does Amazon's price compare to Walmart's year to date?",
+        "expected_tool": "compare_stocks",
+        "got_tool": "compare_stocks",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "What's the current price of Jollibee?",
+        "expected_tool": "get_current_price",
+        "got_tool": "get_current_price",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "Globe's min and max over the last 3 months",
+        "expected_tool": "get_stock_history",
+        "got_tool": "get_stock_history",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "How has Nvidia performed over the past two weeks?",
+        "expected_tool": "get_stock_history",
+        "got_tool": "get_stock_history",
+        "tool_ok": true,
+        "ticker_ok": true
+      },
+      {
+        "q": "What's GT Capital's 30-day moving average over the last month?",
+        "expected_tool": "get_moving_average",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "Compare Ayala Land and SM Prime year to date",
+        "expected_tool": "compare_stocks",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "Compare Apple and Jollibee this year",
+        "expected_tool": "compare_stocks",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      }
+    ]
+  },
+  {
+    "variant": "few_shot",
+    "tool_acc": 0.0,
+    "ticker_acc": 0.0,
+    "avg_latency_ms": 3351.9,
+    "avg_tokens": 0.0,
+    "rows": [
+      {
+        "q": "What were the min and max prices of Apple in Q1 2025?",
+        "expected_tool": "get_stock_history",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "current price of Microsoft",
+        "expected_tool": "get_current_price",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "Show Tesla's 20-day moving average over the last 3 months",
+        "expected_tool": "get_moving_average",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "Compare Apple and Google this year and say which did better",
+        "expected_tool": "compare_stocks",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "What were Nvidia's highest and lowest closing prices last month?",
+        "expected_tool": "get_stock_history",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "How does Amazon's price compare to Walmart's year to date?",
+        "expected_tool": "compare_stocks",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "What's the current price of Jollibee?",
+        "expected_tool": "get_current_price",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "Globe's min and max over the last 3 months",
+        "expected_tool": "get_stock_history",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "How has Nvidia performed over the past two weeks?",
+        "expected_tool": "get_stock_history",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "What's GT Capital's 30-day moving average over the last month?",
+        "expected_tool": "get_moving_average",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "Compare Ayala Land and SM Prime year to date",
+        "expected_tool": "compare_stocks",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      },
+      {
+        "q": "Compare Apple and Jollibee this year",
+        "expected_tool": "compare_stocks",
+        "got_tool": null,
+        "tool_ok": false,
+        "ticker_ok": false
+      }
+    ]
+  }
+]

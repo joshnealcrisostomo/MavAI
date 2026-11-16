@@ -1,0 +1,6 @@
+=== ALL-EVALS SUMMARY ===
+  [PASS] check_keys (pre-flight)  (9.9s)
+  [PASS] eval_suite (reliability)  (256.2s)
+  [PASS] eval_forecast_vetting (unit/trajectory/e2e/judge)  (696.4s)
+  [PASS] eval_ragas (Faithfulness/Answer Relevance)  (214.0s)
+  [PASS] forecast_bakeoff (walk-forward FAANG backtest, RRL #14)  (2.9s)

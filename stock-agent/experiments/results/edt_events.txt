@@ -1,0 +1,20 @@
+EDT event-detection discrimination (real gold labels, dev.txt)
+parsed 1948 docs: 456 event / 1492 calm; testing 75 event + 75 calm (seed 42)
+
+=== RESULTS (computed by this script) ===
+recall on real catalysts (flags EVENT docs): 97%  (73/75)
+false-alarm rate (flags CALM docs):          11%  (8/75)
+DISCRIMINATION gap (event - calm):           +87 pts
+precision 90%  recall 97%  F1 94%  accuracy 93%
+(n=150, chance = 50%)
+
+missed events (2): New Contract, New Contract
+false alarms on calm (8):
+   - Tiger Finance Provides Nu-Steel Trade With $10 Mil . in Growth Capital
+   - EducationDynamics Acquires Assets of QuinStreet's Higher Education Ver
+   - Therapeutic Solutions International Reports Positive Preclinical Data 
+   - Leidos Awarded Task Order to Support the Office of the Secretary of De
+   - Euro Tech Holdings Company Limited Reports Ballast Water Treatment Sys
+   - Allbridge and Ipanema Solutions Merge to Simplify Technology Implement
+   - Biophytis announces a 10 million capital increase through private plac
+   - SHAREHOLDER ALERT: WeissLaw LLP Investigates Garrison Capital Inc . NE

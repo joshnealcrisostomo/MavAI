@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+mlruns/
+chroma_store/
+.env
+*.md
+.git/
+.ipynb_checkpoints/
+experiments/

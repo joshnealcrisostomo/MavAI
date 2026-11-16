@@ -1,0 +1,18 @@
+openai>=1.40,<2
+yfinance>=0.2.40
+requests>=2.31
+pandas>=2.0
+chromadb>=0.5,<0.6
+streamlit>=1.36
+plotly>=5.20
+fastapi>=0.110
+uvicorn>=0.29
+sse-starlette>=2.1
+mlflow-skinny>=2.14
+pydantic>=2.6
+statsforecast>=1.7
+
+# Optional forecast backend (Component #14 bake-off arm). Pulls torch + transformers, so it's
+# NOT installed by default - the bake-off skips it gracefully if absent. Install only to run the
+# Chronos-Bolt arm, or if it wins the bake-off and becomes the live model:
+#   pip install chronos-forecasting

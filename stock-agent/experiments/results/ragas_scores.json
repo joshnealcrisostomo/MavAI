@@ -1,0 +1,198 @@
+[
+  {
+    "ticker": "AAPL",
+    "date": "2026-06-25",
+    "stance": "caution",
+    "faithfulness": 0.6666666666666666,
+    "answer_relevancy": 0.0
+  },
+  {
+    "ticker": "AAPL",
+    "date": "2026-07-02",
+    "stance": "trust",
+    "faithfulness": 0.6666666666666666,
+    "answer_relevancy": 0.6238493608389889
+  },
+  {
+    "ticker": "AAPL",
+    "date": "2026-04-10",
+    "stance": "trust",
+    "faithfulness": 0.14285714285714285,
+    "answer_relevancy": 0.6767056163910081
+  },
+  {
+    "ticker": "AAPL",
+    "date": "2026-03-11",
+    "stance": "trust",
+    "faithfulness": 0.5,
+    "answer_relevancy": 0.6785915801822364
+  },
+  {
+    "ticker": "MSFT",
+    "date": "2026-06-26",
+    "stance": "trust",
+    "faithfulness": 0.16666666666666666,
+    "answer_relevancy": 0.6987511535664536
+  },
+  {
+    "ticker": "MSFT",
+    "date": "2026-05-29",
+    "stance": "trust",
+    "faithfulness": 0.5,
+    "answer_relevancy": 0.6714759269643787
+  },
+  {
+    "ticker": "MSFT",
+    "date": "2026-04-27",
+    "stance": "trust",
+    "faithfulness": 0.25,
+    "answer_relevancy": 0.638033839741715
+  },
+  {
+    "ticker": "MSFT",
+    "date": "2026-02-19",
+    "stance": "trust",
+    "faithfulness": 0.6666666666666666,
+    "answer_relevancy": 0.6603161699636765
+  },
+  {
+    "ticker": "GOOG",
+    "date": "2026-04-30",
+    "stance": "trust",
+    "faithfulness": 0.4,
+    "answer_relevancy": 0.6812810551926868
+  },
+  {
+    "ticker": "GOOG",
+    "date": "2026-07-23",
+    "stance": "caution",
+    "faithfulness": 0.5,
+    "answer_relevancy": 0.0
+  },
+  {
+    "ticker": "GOOG",
+    "date": "2026-05-20",
+    "stance": "trust",
+    "faithfulness": 0.3333333333333333,
+    "answer_relevancy": 0.6482357386519556
+  },
+  {
+    "ticker": "GOOG",
+    "date": "2026-05-27",
+    "stance": "trust",
+    "faithfulness": 0.3333333333333333,
+    "answer_relevancy": 0.654209084993871
+  },
+  {
+    "ticker": "AMZN",
+    "date": "2026-04-09",
+    "stance": "trust",
+    "faithfulness": 0.42857142857142855,
+    "answer_relevancy": 0.6974183603746243
+  },
+  {
+    "ticker": "AMZN",
+    "date": "2026-06-22",
+    "stance": "trust",
+    "faithfulness": 0.5,
+    "answer_relevancy": 0.6309738494549718
+  },
+  {
+    "ticker": "AMZN",
+    "date": "2026-06-16",
+    "stance": "trust",
+    "faithfulness": 0.5714285714285714,
+    "answer_relevancy": 0.6770124441839211
+  },
+  {
+    "ticker": "AMZN",
+    "date": "2026-02-19",
+    "stance": "trust",
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.7112668640275692
+  },
+  {
+    "ticker": "META",
+    "date": "2026-07-01",
+    "stance": "trust",
+    "faithfulness": 0.8,
+    "answer_relevancy": 0.7158230290175157
+  },
+  {
+    "ticker": "META",
+    "date": "2026-04-30",
+    "stance": "trust",
+    "faithfulness": 0.3333333333333333,
+    "answer_relevancy": 0.6660579706310938
+  },
+  {
+    "ticker": "META",
+    "date": "2026-05-28",
+    "stance": "trust",
+    "faithfulness": 0.3333333333333333,
+    "answer_relevancy": 0.6878510129241592
+  },
+  {
+    "ticker": "META",
+    "date": "2026-07-20",
+    "stance": "trust",
+    "faithfulness": 0.6666666666666666,
+    "answer_relevancy": 0.6822832552524866
+  },
+  {
+    "ticker": "NVDA",
+    "date": "2026-06-01",
+    "stance": "trust",
+    "faithfulness": 0.5,
+    "answer_relevancy": 0.7179406477156455
+  },
+  {
+    "ticker": "NVDA",
+    "date": "2026-06-05",
+    "stance": "trust",
+    "faithfulness": 0.14285714285714285,
+    "answer_relevancy": 0.7409786674202715
+  },
+  {
+    "ticker": "NVDA",
+    "date": "2026-05-04",
+    "stance": "trust",
+    "faithfulness": 0.6666666666666666,
+    "answer_relevancy": 0.6976383590102672
+  },
+  {
+    "ticker": "NVDA",
+    "date": "2026-02-19",
+    "stance": "trust",
+    "faithfulness": 0.4,
+    "answer_relevancy": 0.6561927707320737
+  },
+  {
+    "ticker": "TSLA",
+    "date": "2026-07-23",
+    "stance": "caution",
+    "faithfulness": 1.0,
+    "answer_relevancy": 0.0
+  },
+  {
+    "ticker": "TSLA",
+    "date": "2026-06-29",
+    "stance": "trust",
+    "faithfulness": 0.375,
+    "answer_relevancy": 0.6540597358908321
+  },
+  {
+    "ticker": "TSLA",
+    "date": "2026-06-03",
+    "stance": "trust",
+    "faithfulness": 0.16666666666666666,
+    "answer_relevancy": 0.7103356809434157
+  },
+  {
+    "ticker": "TSLA",
+    "date": "2026-02-20",
+    "stance": "trust",
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.7059914144368845
+  }
+]

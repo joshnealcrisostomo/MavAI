@@ -1,0 +1,11 @@
+FinBERT vs 8B-LLM on HELD-OUT FiQA (out-of-domain), n=150
+gold distribution: {'negative': 43, 'positive': 97, 'neutral': 10}
+
+FinBERT: accuracy 45%  macro-F1 45%
+8B LLM:  accuracy 71%  macro-F1 61%
+
+Compare to the IN-DOMAIN PhraseBank result (FinBERT 98% / LLM 92%): if the gap here is
+similar, FinBERT's edge is real; if it shrank, the 98% was largely PhraseBank-specific and
+FinBERT's value is mainly determinism + being a trained DS model, not raw accuracy.
+Note: FiQA is mostly polar (few true neutrals) and bucketed from a continuous score, so
+absolute numbers are lower than PhraseBank for everyone - the FinBERT-vs-LLM GAP is the point.

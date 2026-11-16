@@ -1,0 +1,100 @@
+Hand-curated benchmark - 77 rows (55 event/unexplained, 22 calm)
+Ground truth = your hand labels. Event -> agent should flag caution/reject; calm -> agent should trust. Two user-facing modes compared: INVESTOR (precise - only flag genuine threats; for long-term holders) vs ANALYST (wide net - flag any material catalyst; for active due-diligence / risk desks).
+
+=== SENSITIVITY TRADE-OFF (the headline table) ===
+mode        catch (reasoning)  catch (pipeline)  calm trust  discrimination
+investor     16%                22%               95%        +17 pts       
+analyst     100%               100%                0%         +0 pts       
+
+Read it: higher catch-rate = catches more real events (recall); higher calm-trust = fewer false alarms (precision). Analyst trades calm-trust for more catch vs Investor.
+
+=== FAIR TEST: company-specific vs market-wide events ===
+(company = |SPY| < 1% that day; macro = |SPY| >= 1%, mostly market beta)
+  company-specific (n=26): investor catch reasoning  23% / pipeline  15%  |  analyst catch reasoning 100% / pipeline 100%
+  market-wide (macro) (n=29): investor catch reasoning  10% / pipeline  28%  |  analyst catch reasoning 100% / pipeline 100%
+  (expect: catch-rate HIGHER on company-specific events - that is the case the use case is actually about. Macro days have debatable ground truth.)
+
+RETRIEVAL RECALL (pipeline's own news surfaced your catalyst): 9% avg over 55 events. Low recall caps pipeline catch-rate in BOTH modes - it can't flag a story it never fetched.
+
+  OVERNIGHT events (n=19): analyst catch reasoning 100% / pipeline 100%, recall   5%
+  INTRADAY events (n=36): analyst catch reasoning 100% / pipeline 100%, recall  11%
+  (open-cut drops intraday news; see RRL-FINDINGS.md section 8.)
+
+Per-event  (I=investor, A=analyst; r=reasoning-only, p=full-pipeline):
+  AAPL  2026-02-02 [event      ] overnight exp=caution  I(r=reject  p=trust  ) A(r=caution p=caution) recall=0%    realized=+7.2%
+  AAPL  2026-02-12 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=100%  realized=-5.4%
+  AAPL  2026-06-09 [event      ] intraday  exp=caution  I(r=trust   p=caution) A(r=caution p=caution) recall=0%    realized=-1.7%
+  AAPL  2026-06-25 [event      ] intraday  exp=caution  I(r=reject  p=caution) A(r=caution p=caution) recall=0%    realized=+0.4%
+  AAPL  2026-07-02 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+7.4%
+  AAPL  2026-07-15 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+4.1%
+  AAPL  2026-07-24 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+3.7%
+  AAPL  2026-07-31 [event      ] intraday  exp=caution  I(r=trust   p=reject ) A(r=caution p=caution) recall=0%    realized=-6.3%
+  AAPL  2026-03-11 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-2.5%
+  AAPL  2026-04-10 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+1.1%
+  AAPL  2026-05-07 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+4.0%
+  MSFT  2026-01-29 [event      ] overnight exp=caution  I(r=reject  p=trust  ) A(r=caution p=caution) recall=0%    realized=-14.0%
+  MSFT  2026-02-05 [event      ] intraday  exp=caution  I(r=trust   p=reject ) A(r=caution p=caution) recall=0%    realized=-2.4%
+  MSFT  2026-04-15 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+7.9%
+  MSFT  2026-05-29 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+0.2%
+  MSFT  2026-06-02 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-10.6%
+  MSFT  2026-06-26 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+10.7%
+  MSFT  2026-07-30 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+24.8%
+  MSFT  2026-08-03 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+7.6%
+  MSFT  2026-01-05 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+1.3%
+  MSFT  2026-07-24 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+18.2%
+  MSFT  2026-08-07 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+0.0%
+  AMZN  2026-02-05 [event      ] overnight exp=caution  I(r=reject  p=reject ) A(r=reject  p=caution) recall=0%    realized=-12.4%
+  AMZN  2026-02-06 [event      ] overnight exp=caution  I(r=trust   p=caution) A(r=caution p=caution) recall=0%    realized=-10.4%
+  AMZN  2026-03-27 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+1.1%
+  AMZN  2026-04-09 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+12.3%
+  AMZN  2026-06-22 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-4.8%
+  AMZN  2026-07-23 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-7.4%
+  AMZN  2026-07-31 [event      ] overnight exp=caution  I(r=reject  p=trust  ) A(r=caution p=caution) recall=0%    realized=+15.6%
+  AMZN  2026-08-03 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+1.1%
+  AMZN  2026-02-19 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+2.9%
+  AMZN  2026-06-16 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=reject ) recall=n/a   realized=-4.8%
+  AMZN  2026-06-24 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+1.8%
+  GOOGL 2026-03-31 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+11.7%
+  GOOGL 2026-04-30 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+13.7%
+  GOOGL 2026-06-22 [event      ] intraday  exp=caution  I(r=reject  p=trust  ) A(r=caution p=caution) recall=100%  realized=-8.3%
+  GOOGL 2026-06-29 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+8.6%
+  GOOGL 2026-07-16 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-7.8%
+  GOOGL 2026-07-23 [event      ] overnight exp=caution  I(r=trust   p=reject ) A(r=caution p=caution) recall=0%    realized=-1.6%
+  GOOGL 2026-07-31 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+7.2%
+  GOOGL 2026-08-03 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-0.5%
+  GOOGL 2026-01-14 [calm       ] ?         exp=trust    I(r=None    p=caution) A(r=None    p=caution) recall=n/a   realized=-2.3%
+  GOOGL 2026-05-07 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+1.1%
+  GOOGL 2026-05-27 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-7.0%
+  META  2026-01-29 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+0.0%
+  META  2026-03-26 [event      ] intraday  exp=caution  I(r=trust   p=reject ) A(r=caution p=caution) recall=0%    realized=-2.6%
+  META  2026-03-31 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+7.2%
+  META  2026-04-08 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+15.2%
+  META  2026-04-30 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-8.4%
+  META  2026-07-01 [event      ] overnight exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+7.1%
+  META  2026-07-30 [event      ] overnight exp=caution  I(r=reject  p=reject ) A(r=reject  p=reject ) recall=0%    realized=+0.5%
+  META  2026-08-03 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+6.4%
+  META  2026-02-17 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-0.4%
+  META  2026-05-28 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-1.9%
+  META  2026-07-20 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-7.9%
+  NVDA  2026-02-06 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+8.8%
+  NVDA  2026-02-26 [event      ] intraday  exp=caution  I(r=caution p=trust  ) A(r=caution p=caution) recall=0%    realized=-6.4%
+  NVDA  2026-03-31 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+7.8%
+  NVDA  2026-04-30 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-0.7%
+  NVDA  2026-05-06 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=reject  p=caution) recall=0%    realized=+12.4%
+  NVDA  2026-06-01 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-2.8%
+  NVDA  2026-06-05 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-6.3%
+  NVDA  2026-07-27 [calm       ] intraday  exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-2.9%
+  NVDA  2026-01-12 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+0.7%
+  NVDA  2026-02-19 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+4.0%
+  NVDA  2026-05-04 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=+8.4%
+  TSLA  2026-04-02 [event      ] overnight exp=caution  I(r=trust   p=reject ) A(r=caution p=caution) recall=100%  realized=-9.3%
+  TSLA  2026-04-15 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+6.1%
+  TSLA  2026-06-05 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=-4.6%
+  TSLA  2026-06-23 [event      ] intraday  exp=caution  I(r=trust   p=reject ) A(r=caution p=reject ) recall=0%    realized=+1.7%
+  TSLA  2026-06-29 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=100%  realized=+10.6%
+  TSLA  2026-07-02 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=reject ) recall=100%  realized=-4.4%
+  TSLA  2026-07-06 [event      ] intraday  exp=caution  I(r=trust   p=trust  ) A(r=caution p=caution) recall=0%    realized=+3.6%
+  TSLA  2026-07-23 [event      ] overnight exp=caution  I(r=reject  p=caution) A(r=caution p=caution) recall=0%    realized=-20.2%
+  TSLA  2026-02-03 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-1.1%
+  TSLA  2026-02-20 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-0.8%
+  TSLA  2026-06-03 [calm       ] ?         exp=trust    I(r=None    p=trust  ) A(r=None    p=caution) recall=n/a   realized=-6.4%

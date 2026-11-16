@@ -1,0 +1,24 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# local data stores / logs / caches
+chroma_store/
+mlruns/
+ph_cache.json
+news_cache.json
+gdelt_cache.json
+*.log
+
+# large evaluation datasets - downloaded/generated locally, never committed
+# (EDT "Trade the Event" is ~1.6GB; see FORECAST-VETTING-HANDOFF.md for the download link)
+experiments/data/edt/
+# regenerable eval dataset artifact (rebuild with experiments/build_dataset.py)
+experiments/results/forecast_dataset.json
+
+.ipynb_checkpoints/
